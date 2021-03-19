@@ -1,4 +1,4 @@
-export class Problem {
+export class FeedBack {
   //   id: string;
   //   issue: string;
   //   comment: string;

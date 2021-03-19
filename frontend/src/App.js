@@ -1,24 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Home from './component/Home';
+import { FeedBackProvider } from './context/FeedBackContext';
+import FeedBack from './component/FeedBack';
+import { SocketProvider } from './context/SocketContext';
+import CustomizedNavbar from './component/CustomizedNavbar';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <SocketProvider>
+      <FeedBackProvider>
+        <Router>
+          <CustomizedNavbar />
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/feedback">
+              <FeedBack />
+            </Route>
+          </Switch>
+        </Router>
+      </FeedBackProvider>
+    </SocketProvider>
   );
 }
 

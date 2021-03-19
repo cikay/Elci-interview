@@ -1,13 +1,13 @@
 import { Injectable } from '@nestjs/common';
-import { Problem } from './problem.model';
+import { FeedBack } from './feedback.model';
 @Injectable()
-export class ProblemService {
-  problems: Problem[] = [];
+export class FeedBackService {
+  problems: FeedBack[] = [];
 
   insertProblem(issue: string, comment: string) {
     const date = new Date();
     const id = date.getTime();
-    const problem = new Problem(id, issue, comment, date);
+    const problem = new FeedBack(id, issue, comment, date);
     this.problems.push(problem);
     return id;
   }
